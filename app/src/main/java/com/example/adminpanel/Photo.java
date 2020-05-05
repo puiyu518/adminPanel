@@ -11,14 +11,23 @@ public class Photo {
 
     public Double mLongitude;
 
+    public String mPastImageUrl;
+
+    public String mRecentImageUrl;
+
+    public String mARMap;
+
     public Photo() {
     }
 
-    public Photo(String mLocation, String mDescription, String mLatitude, String mLongitude) {
+    public Photo(String mLocation, String mDescription, String mLatitude, String mLongitude,String mImageUrl,String mPastImageUrl,String mRecentImageUrl,String aRMap) {
         this.mLocation = mLocation;
         this.mDescription = mDescription;
         this.mLatitude = Double.parseDouble(mLatitude);
         this.mLongitude = Double.parseDouble(mLongitude);
+        this.mPastImageUrl = mPastImageUrl;
+        this.mRecentImageUrl = mRecentImageUrl;
+        this.mARMap = aRMap;
     }
 
     public String getmLocation() {
@@ -29,13 +38,9 @@ public class Photo {
         this.mLocation = mLocation;
     }
 
-    //public String getmImageUrl() {
-    //    return mImageUrl;
-    //}
+    public String getmImageUrl() { return mImageUrl; }
 
-   // public void setmImageUrl(String mImageUrl) {
-   //     this.mImageUrl = mImageUrl;
-    //}
+    public void setmImageUrl(String mImageUrl) { this.mImageUrl = mImageUrl; }
 
     public String getmDescription() {
         return mDescription;
@@ -59,6 +64,33 @@ public class Photo {
 
     public void setmLongitude(Double mLongitude) {
         this.mLongitude = mLongitude;
+    }
+
+    public String getmPastImageUrl() {
+
+        return mPastImageUrl;
+    }
+
+    public void setmPastImageUrl(String mPastImageUrl) {
+
+        this.mPastImageUrl = mPastImageUrl;
+    }
+
+    public String getmRecentImageUrl() {
+
+        return mRecentImageUrl;
+    }
+
+    public void setmRecentImageUrl(String mRecentImageUrl) {
+        this.mRecentImageUrl = mRecentImageUrl;
+    }
+
+    public String getmARMap() {
+        return mARMap;
+    }
+
+    public void setmARMap(String mARMap) {
+        this.mARMap = mARMap;
     }
 }
 

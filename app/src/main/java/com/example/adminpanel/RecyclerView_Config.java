@@ -27,6 +27,10 @@ public class RecyclerView_Config {
         private TextView mDescription;
         private TextView mLatitude;
         private TextView mLongitude;
+        private String mImageUrl;
+        private String mArMap;
+        private String mPastImageUrl;
+        private String mRecentImageUrl;
 
         private String key;
 
@@ -43,11 +47,13 @@ public class RecyclerView_Config {
                     Intent intent = new Intent (mContext,Photo_detail_Activity.class);
                     intent.putExtra("key",key);
                     intent.putExtra("location",mLocation.getText().toString());
-                    System.out.println(mDescription.getText());
                     intent.putExtra("description",mDescription.getText().toString());
                     intent.putExtra("latitude",mLatitude.getText().toString());
                     intent.putExtra("longitude",mLongitude.getText().toString());
-
+                    intent.putExtra("imageUrl",mImageUrl);
+                    intent.putExtra("arMap",mArMap);
+                    intent.putExtra("pastImageUrl",mPastImageUrl);
+                    intent.putExtra("recentImageUrl",mRecentImageUrl);
                     mContext.startActivity(intent);
                 }
             });
@@ -55,9 +61,14 @@ public class RecyclerView_Config {
 
         public void bind(Photo photo, String key) {
             mLocation.setText(photo.getmLocation());
-            //mDescription.setText(photo.getmDescription());
+            mDescription.setText(photo.getmDescription());
             mLatitude.setText(photo.getmLatitude().toString());
             mLongitude.setText(photo.getmLongitude().toString());
+            mImageUrl = photo.getmImageUrl();
+            mPastImageUrl = photo.getmPastImageUrl();
+            mRecentImageUrl = photo.getmRecentImageUrl();
+            mArMap = photo.getmARMap();
+
             this.key = key;
         }
     }
