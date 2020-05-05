@@ -50,6 +50,10 @@ public class Photo_detail_Activity extends AppCompatActivity {
         mLatitude_editText = (EditText) findViewById(R.id.latitude);
         mLongitude_editText = (EditText) findViewById(R.id.longitude);
 
+        mLocation_editText.setText(location);
+        mDescription_editText.setText(desription);
+        mLatitude_editText.setText(latitude);
+        mLongitude_editText.setText(longitude);
 
         mUpdate_btn = (Button) findViewById(R.id.update);
         mDelete_btn = (Button) findViewById(R.id.delete);

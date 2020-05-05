@@ -41,7 +41,7 @@ public class FirebaseDatabaseHelper {
                     keys.add(keyNode.getKey());
                     Photo photo = keyNode.getValue(Photo.class);
                     photos.add(photo);
-                }
+                } 
                 dataStatus.DataIsLoaded(photos, keys);
             }
 
