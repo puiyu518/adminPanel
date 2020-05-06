@@ -1,5 +1,7 @@
 package com.example.adminpanel;
 
+import static java.lang.Double.parseDouble;
+
 public class Photo {
     public String mLocation;
 

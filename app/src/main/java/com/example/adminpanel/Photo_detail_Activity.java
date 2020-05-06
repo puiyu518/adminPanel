@@ -8,6 +8,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.OnPausedListener;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageException;
+import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,7 +67,8 @@ public class Photo_detail_Activity extends AppCompatActivity {
         mDescription_editText.setText(desription);
         mLatitude_editText.setText(latitude);
         mLongitude_editText.setText(longitude);
-        Glide.with(this /* context */).load(imageUrl).into(image);
+        StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imageUrl);
+        Glide.with(this /* context */).load(storageReference).into(image);
 
 
         mUpdate_btn = (Button) findViewById(R.id.update);
