@@ -4,9 +4,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.Toast;
+import com.bumptech.glide.Glide;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import java.util.List;
 
@@ -19,6 +24,7 @@ public class Photo_detail_Activity extends AppCompatActivity {
     private Button mUpdate_btn;
     private Button mDelete_btn;
     private Button mBack_btn;
+    private ImageView image;
 
     private String key;
     private String location;
@@ -30,8 +36,9 @@ public class Photo_detail_Activity extends AppCompatActivity {
     private String pastImageUrl;
     private String recentImageUrl;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.photo_detail);
 
@@ -49,11 +56,14 @@ public class Photo_detail_Activity extends AppCompatActivity {
         mDescription_editText = (EditText) findViewById(R.id.description);
         mLatitude_editText = (EditText) findViewById(R.id.latitude);
         mLongitude_editText = (EditText) findViewById(R.id.longitude);
+        image = (ImageView) findViewById(R.id.image);
 
         mLocation_editText.setText(location);
         mDescription_editText.setText(desription);
         mLatitude_editText.setText(latitude);
         mLongitude_editText.setText(longitude);
+        Glide.with(this /* context */).load(imageUrl).into(image);
+
 
         mUpdate_btn = (Button) findViewById(R.id.update);
         mDelete_btn = (Button) findViewById(R.id.delete);
@@ -80,7 +90,7 @@ public class Photo_detail_Activity extends AppCompatActivity {
 
                     @Override
                     public void DataIsUpdated() {
-                        Toast.makeText(Photo_detail_Activity.this,"Data has been updated successfully",Toast.LENGTH_LONG).show();
+                        Toast.makeText(Photo_detail_Activity.this, "Data has been updated successfully", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -119,7 +129,8 @@ public class Photo_detail_Activity extends AppCompatActivity {
         mBack_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); return;
+                finish();
+                return;
             }
         });
     }
