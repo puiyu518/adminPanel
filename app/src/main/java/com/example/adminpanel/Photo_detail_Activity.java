@@ -1,5 +1,7 @@
 package com.example.adminpanel;
 
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
@@ -7,14 +9,13 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.ListResult;
-import com.google.firebase.storage.OnPausedListener;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.StorageException;
-import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -40,6 +41,9 @@ public class Photo_detail_Activity extends AppCompatActivity {
     private String arMap;
     private String pastImageUrl;
     private String recentImageUrl;
+
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference;
 
 
     @Override
@@ -67,8 +71,14 @@ public class Photo_detail_Activity extends AppCompatActivity {
         mDescription_editText.setText(desription);
         mLatitude_editText.setText(latitude);
         mLongitude_editText.setText(longitude);
-        StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imageUrl);
-        Glide.with(this /* context */).load(storageReference).into(image);
+
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
+        StorageReference imageRef = storageReference.child("upload/CentralMarket/central_market_cover.jpg");
+        //StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imageUrl);
+        Glide.with(this /* context */).load(imageRef).into(image);
+
+
 
 
         mUpdate_btn = (Button) findViewById(R.id.update);
@@ -140,4 +150,36 @@ public class Photo_detail_Activity extends AppCompatActivity {
             }
         });
     }
-}
+
+    /*public void downloadWithBytes(){
+        StorageReference imageRefl = storageReference.child("upload/CentralMarket/central_market_cover.jpg");
+
+        long MAXBYTES = 1024*1024;
+        imageRefl.getBytes(MAXBYTES).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                imageView.setImage(bitmap);
+            }
+        }).addOnSuccessListener(new OnFailureListener(){
+            @Override
+            public void onFailue(@NonNull Exception e){
+
+            }
+        });
+    }
+
+    public void downloadViaUrl(){
+        StorageReference imageRef = storageReference.child("upload/CentralMarket/central_market_cover.jpg");
+        imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(Photo_detail_Activity.this).load(uri).into(image);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        })*/
+    }
