@@ -14,6 +14,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.*;
+import com.bumptech.glide.Registry;
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -72,13 +77,12 @@ public class Photo_detail_Activity extends AppCompatActivity {
         mLatitude_editText.setText(latitude);
         mLongitude_editText.setText(longitude);
 
-        firebaseStorage = FirebaseStorage.getInstance();
-        storageReference = firebaseStorage.getReference();
-        StorageReference imageRef = storageReference.child("upload/CentralMarket/central_market_cover.jpg");
+        //firebaseStorage = FirebaseStorage.getInstance();
+        //storageReference = firebaseStorage.getReference();
+        //StorageReference imageRef = storageReference.child("upload/CentralMarket/central_market_cover.jpg");
         //StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imageUrl);
-        Glide.with(this /* context */).load(imageRef).into(image);
-
-
+        //Glide.with(this /* context */).load(imageRef).into(image);
+        Picasso.with(this).load(imageUrl).into(image);
 
 
         mUpdate_btn = (Button) findViewById(R.id.update);

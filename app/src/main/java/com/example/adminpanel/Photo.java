@@ -19,6 +19,10 @@ public class Photo {
 
     public String mARMap;
 
+    //public String mFrist;
+
+    //public String mSecond;
+
     public Photo() {
     }
 
@@ -94,5 +98,29 @@ public class Photo {
     public void setmARMap(String mARMap) {
         this.mARMap = mARMap;
     }
+
+    /*public Timeline(String a,String b) {
+        this.mFrist = mFrist;
+        this.mSecond = mSecond;
+    }
+        public String getmFrist() {
+
+            return mFrist;
+        }
+
+        public void setmFrist(String a) {
+
+            this.mFrist = mFrist;
+        }
+
+        public String getmSecond() {
+
+            return mSecond;
+        }
+
+        public void setmSecond(String b) {
+            this.mSecond = mSecond;
+        }
+    } */
 }
 
